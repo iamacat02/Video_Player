@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SplashThemeV31" parent="Theme.SplashScreen">
+        <item name="android:animatedImageDrawable">@drawable/ic_launcher</item>
+        <item name="android:windowSplashScreenBrandingImage">@drawable/ic_branding_image</item>
+        <item name="android:windowSplashScreenAnimationDuration">1800</item>
+        <item name="postSplashScreenTheme">@style/I.Am.A.Cat.VideoPlayer</item>
+        <item name="fontFamily">@font/roboto_slab_medium</item>
+    </style>
+</resources>

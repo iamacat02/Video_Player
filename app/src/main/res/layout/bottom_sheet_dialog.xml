@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/_10sdp">
+
+    <TextView
+        android:id="@+id/bottom_sheet_lock_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:text="@string/lock_screen"
+        android:textColor="@color/text_color"
+        app:drawableLeftCompat="@drawable/ic_lock"
+        android:layout_marginVertical="@dimen/_10sdp"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginVertical="@dimen/_10sdp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:text="@string/quality"
+            android:textColor="@color/text_color"
+            app:drawableStartCompat="@drawable/ic_quality" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/bottom_sheet_quality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_720p"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_10ssp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginVertical="@dimen/_10sdp">
+
+        <TextView
+            android:id="@+id/bottom_sheet_playback_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:text="@string/playback_speed"
+            android:textColor="@color/text_color"
+            app:drawableLeftCompat="@drawable/ic_playback_speed" />
+
+        <Spinner
+            android:id="@+id/speedSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:entries="@array/playback_speeds" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <TextView
+        android:id="@+id/bottom_sheet_audio_track"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:text="@string/audio_track"
+        android:textColor="@color/text_color"
+        app:drawableLeftCompat="@drawable/ic_audiotrack"
+        android:layout_marginVertical="@dimen/_10sdp"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

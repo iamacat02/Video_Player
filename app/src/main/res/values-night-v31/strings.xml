@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Streemify</string>
+    <string name="todo">TODO</string>
+    <string name="folder_name">FolderName</string>
+    <string name="no_videos">No Videos</string>
+    <string name="thumbnail">Thumbnail</string>
+    <string name="_0_min">0 min</string>
+    <string name="example_video_title">example_video_title</string>
+    <string name="_00_00_00">00/00/00</string>
+    <string name="_0x0">0x0</string>
+    <string name="_0_mb">0 MB</string>
+    <string name="background_playback">Background PlayBack</string>
+    <string name="splash_app_name">Streemify \nVideo Player</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="locked">Locked</string>
+    <string name="audio_track">Audio Track</string>
+    <string name="lock_screen">Lock Screen</string>
+    <string name="quality">Quality</string>
+    <string name="_720p">720p</string>
+    <string name="playback_speed">PlayBack Speed</string>
+    <string name="_1_00">1:00</string>
+    <string name="notification_previous">notification_previous</string>
+    <string name="notification_play_pause">notification_play_pause</string>
+    <string name="notification_next">notification_next</string>
+    <string name="notification_closed">notification_closed</string>
+    <string name="_0">0%</string>
+
+    <string-array name="playback_speeds">
+        <item>0.25x</item>
+        <item>0.5x</item>
+        <item>Normal</item>
+        <item>1.5x</item>
+        <item>2x</item>
+        <item>4x</item>
+        <item>5x</item>
+    </string-array>
+
+</resources>

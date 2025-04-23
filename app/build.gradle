@@ -1,0 +1,51 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace 'i.am.a.cat.streemify'
+    compileSdk 35
+
+
+    defaultConfig {
+        applicationId "i.am.a.cat.streemify"
+        minSdk 23
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+}
+
+dependencies {
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+    implementation libs.sdp.android
+    implementation libs.ssp.android
+    implementation libs.media3.exoplayer
+    implementation libs.androidx.media3.ui
+    implementation libs.androidx.media3.session
+    implementation libs.androidx.media
+    implementation libs.androidx.core.splashscreen
+    implementation libs.glide
+    implementation libs.permissionx
+
+}

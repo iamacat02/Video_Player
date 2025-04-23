@@ -1,0 +1,22 @@
+<resources>
+    <!-- Light Theme -->
+    <style name="I.Am.A.Cat.VideoPlayer" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.Material3.TitleLarge</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="fontFamily">@font/roboto_slab_medium</item>
+
+        <!-- Status Bar Transparent করতে নিচের লাইনগুলো যুক্ত করুন -->
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/primary_dark</item>
+        <item name="android:windowLightStatusBar">true</item> <!-- Light Mode Status Bar Icon -->
+    </style>
+
+    <!-- FullScreen Activity Theme -->
+    <style name="I.Am.A.Cat.VideoPlayer.FullScreenActivity" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="fontFamily">@font/roboto_slab_medium</item>
+    </style>
+
+
+</resources>
