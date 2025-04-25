@@ -8,6 +8,7 @@ This is a Java-based video player application designed with a user interface sim
 - **Media-style Notification**: The app shows media-style notifications to control video playback directly from the notification bar.
 - **Background Playback**: Allows users to continue video playback in the background, even when the app is not actively on the screen.
 - **Swipe to Control Volume and Brightness**: Swipe gestures are implemented to adjust the volume and screen brightness while watching videos.
+- **Picture In Picture (PIP) Mode Supported
 - **Clean UI**: A minimalist and responsive design focused on providing an enjoyable viewing experience.
 
 ## Requirements
@@ -19,9 +20,9 @@ This is a Java-based video player application designed with a user interface sim
 
 ## Installation
 
-### Clone the repository
+- Clone the repository
 
 
-### Import Android Studio 
+- Import Android Studio 
 
-### Enjoy
+- Enjoy
