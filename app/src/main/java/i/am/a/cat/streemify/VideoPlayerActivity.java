@@ -669,7 +669,7 @@ public class VideoPlayerActivity extends AppCompatActivity implements VideoAdapt
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             PictureInPictureParams.Builder pipBuilder = new PictureInPictureParams.Builder();
             if (!isPortrait()) {
-                Rational aspectRatio = new Rational(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+               Rational aspectRatio = new Rational(16, 9);
                 pipBuilder.setAspectRatio(aspectRatio);
             } else {
                 Rational aspectRatio = new Rational(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
