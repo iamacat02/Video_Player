@@ -26,3 +26,6 @@ This is a Java-based video player application designed with a user interface sim
 - Import Android Studio 
 
 - Enjoy
+
+
+  ![Video Player Screenshot](vp.jpg)
