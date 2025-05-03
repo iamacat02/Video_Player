@@ -1,4 +1,4 @@
-package i.am.a.cat.streemify;
+package i.am.a.cat.streemify.utils;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -23,11 +23,12 @@ import androidx.media3.ui.PlayerNotificationManager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 
 import java.util.ArrayList;
-import java.util.Objects;
+
+import i.am.a.cat.streemify.data.Video;
+import i.am.a.cat.streemify.ui.screen.VideoPlayerActivity;
 
 @UnstableApi
 public class NotificationHelper {
@@ -105,8 +106,8 @@ public class NotificationHelper {
                             Glide.with(context)
                                     .asBitmap()
                                     .load(imageUrl)
-                                    .override(512, 512) // Set desired high-res size
-                                    .fitCenter() // Optional: or use .centerCrop() depending on aspect ratio needs
+                                    .override(512, 512)
+                                    .fitCenter()
                                     .into(new CustomTarget<Bitmap>() {
                                         @Override
                                         public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
@@ -115,7 +116,6 @@ public class NotificationHelper {
 
                                         @Override
                                         public void onLoadCleared(@Nullable Drawable placeholder) {
-                                            // Optional: handle cleanup
                                         }
                                     });
                         }

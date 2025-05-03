@@ -1,4 +1,4 @@
-package i.am.a.cat.streemify;
+package i.am.a.cat.streemify.data;
 
 public class Folder {
     private final String folderName;

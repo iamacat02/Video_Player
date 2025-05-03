@@ -1,4 +1,4 @@
-package i.am.a.cat.streemify;
+package i.am.a.cat.streemify.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;

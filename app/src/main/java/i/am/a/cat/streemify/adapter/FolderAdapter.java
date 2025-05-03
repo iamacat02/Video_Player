@@ -1,4 +1,4 @@
-package i.am.a.cat.streemify;
+package i.am.a.cat.streemify.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+
+import i.am.a.cat.streemify.R;
+import i.am.a.cat.streemify.ui.screen.VideoListActivity;
+import i.am.a.cat.streemify.data.Folder;
 
 public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder> {
     private final Context context;

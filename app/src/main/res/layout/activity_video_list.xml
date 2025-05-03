@@ -5,7 +5,7 @@
     android:id="@+id/list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VideoListActivity">
+    tools:context=".ui.screen.VideoListActivity">
 
     <include
         android:id="@+id/appBarLayout"

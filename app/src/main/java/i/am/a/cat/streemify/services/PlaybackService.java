@@ -1,4 +1,4 @@
-package i.am.a.cat.streemify;
+package i.am.a.cat.streemify.services;
 
 import android.content.Intent;
 import android.os.Binder;
@@ -29,6 +29,9 @@ import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import i.am.a.cat.streemify.data.Video;
+import i.am.a.cat.streemify.utils.NotificationHelper;
 
 @UnstableApi
 public class PlaybackService extends MediaSessionService {
@@ -151,7 +154,7 @@ public class PlaybackService extends MediaSessionService {
     }
 
     // বর্তমান ভিডিওর নাম
-    protected String getCurrentVideoName() {
+    public String getCurrentVideoName() {
         MediaItem mediaItem = exoPlayer.getCurrentMediaItem();
         return mediaItem != null && mediaItem.mediaMetadata.title != null ? mediaItem.mediaMetadata.title.toString() : "Unknown";
     }

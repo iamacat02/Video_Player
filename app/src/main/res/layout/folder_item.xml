@@ -25,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:fontFamily="sans-serif"
             android:text="@string/folder_name"
             android:textColor="@color/text_color"
             android:textSize="@dimen/_12ssp" />
@@ -36,7 +37,8 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:text="@string/no_videos"
             android:textColor="@color/text_color"
-            android:textSize="@dimen/_10ssp" />
+            android:textSize="@dimen/_10ssp"
+            android:textStyle="italic" />
     </LinearLayout>
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package i.am.a.cat.streemify;
+package i.am.a.cat.streemify.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,6 +16,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import i.am.a.cat.streemify.R;
+import i.am.a.cat.streemify.data.Video;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHolder> {
 

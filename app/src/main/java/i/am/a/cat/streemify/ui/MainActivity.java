@@ -1,4 +1,4 @@
-package i.am.a.cat.streemify;
+package i.am.a.cat.streemify.ui;
 
 import android.Manifest;
 import android.content.Intent;
@@ -31,13 +31,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import i.am.a.cat.streemify.R;
+import i.am.a.cat.streemify.adapter.FolderAdapter;
+import i.am.a.cat.streemify.adapter.VideoAdapter;
+import i.am.a.cat.streemify.data.Folder;
+import i.am.a.cat.streemify.data.Video;
+import i.am.a.cat.streemify.ui.screen.VideoPlayerActivity;
+
 public class MainActivity extends AppCompatActivity {
-    private Toolbar toolbar;
     private RecyclerView recyclerViewFolder, recyclerViewVideo;
-    private List<Folder> folderList;
     private List<Video> videoList;
-    private FolderAdapter adapter;
-    private VideoAdapter adapter2;
     private ActivityResultLauncher<Intent> writeSettingsLauncher;
 
     @Override
@@ -54,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewFolder = findViewById(R.id.recycleFolderList);
         recyclerViewVideo = findViewById(R.id.recycleVideoViewList);
 
-        toolbar = findViewById(R.id.toolBar);
+        Toolbar toolbar = findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
 
         writeSettingsLauncher = registerForActivityResult(
@@ -79,22 +82,22 @@ public class MainActivity extends AppCompatActivity {
             PermissionX.init(this)
                     .permissions(Manifest.permission.READ_MEDIA_VIDEO, Manifest.permission.POST_NOTIFICATIONS)
                     .request((allGranted, grantedList, deniedList) -> {
-                        if (allGranted) {
+                        if (grantedList.contains( Manifest.permission.READ_MEDIA_VIDEO)) {
                             loadFolder();
                             loadVideoFromFileApi();
                         } else {
-                            Toast.makeText(this, "Permission Not Granted", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Storage Permission Not Granted", Toast.LENGTH_SHORT).show();
                         }
                     });
         } else {
             PermissionX.init(this)
                     .permissions(Manifest.permission.READ_EXTERNAL_STORAGE)
                     .request((allGranted, grantedList, deniedList) -> {
-                        if (allGranted) {
+                        if (grantedList.contains(Manifest.permission.READ_EXTERNAL_STORAGE)) {
                             loadFolder();
                             loadVideoFromFileApi();
                         } else {
-                            Toast.makeText(this, "Permission Not Granted", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Storage Permission Not Granted", Toast.LENGTH_SHORT).show();
                         }
                     });
         }
@@ -102,8 +105,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void loadFolder() {
-        folderList = getFolderFromStorage();
-        adapter = new FolderAdapter(this, folderList);
+        List<Folder> folderList = getFolderFromStorage();
+        FolderAdapter adapter = new FolderAdapter(this, folderList);
         recyclerViewFolder.setAdapter(adapter);
     }
     private void loadVideoFromFileApi() {
@@ -112,14 +115,14 @@ public class MainActivity extends AppCompatActivity {
 
         scanDirectoryForVideos(directory, videoList);
 
-         adapter2 = new VideoAdapter(this, videoList, this::onVideoClick);
+        VideoAdapter adapter2 = new VideoAdapter(this, videoList, this::onVideoClick);
         recyclerViewVideo.setAdapter(adapter2);
     }
 
     @OptIn(markerClass = UnstableApi.class)
     private void onVideoClick(Video video) {
         Intent intent = new Intent(this, VideoPlayerActivity.class);
-        intent.putExtra("videoPath", video.getPath()); // ক্লিক করা ভিডিও পাথ পাঠান
+        intent.putExtra("videoPath", video.getPath());
         intent.putParcelableArrayListExtra("videoList", (ArrayList<? extends Parcelable>) videoList); // ভিডিও লিস্ট পাঠান
         startActivity(intent);
     }
@@ -129,15 +132,14 @@ public class MainActivity extends AppCompatActivity {
             File[] files = dir.listFiles();
             if (files != null) {
                 for (File file : files) {
-                    // শুধুমাত্র ফাইল যদি ভিডিও হয়, তা হলে অ্যাড করা হবে
                     if (!file.isDirectory() && isVideoFile(file)) {
                         videos.add(new Video(
                                 file.getPath(),
                                 file.getName(),
                                 file.getAbsolutePath(),
-                                0L,                                // duration অনুমান করা যাচ্ছে না File API থেকে
+                                0L,
                                 file.lastModified(),
-                                "xxx:xxxx",                        // resolution File API থেকে পাওয়া যাবে না
+                                "xxx:xxxx",
                                 file.length()
                         ));
                     }
@@ -167,21 +169,17 @@ public class MainActivity extends AppCompatActivity {
             if (cursor != null) {
                 HashMap<String, Integer> folderMap = new HashMap<>();
 
-                // কার্সরের মধ্যে প্রতিটি ভিডিও এবং তার ফোল্ডার তথ্য বের করা
                 while (cursor.moveToNext()) {
                     String folderName;
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                        // Android Q বা তার পরে BUCKET_DISPLAY_NAME ব্যবহার করা
                         folderName = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Video.Media.BUCKET_DISPLAY_NAME));
                     } else {
-                        // পুরনো ভার্সনের জন্য ফাইল পাথ থেকে ফোল্ডার নাম বের করা
                         String filePath = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DATA));
                         File file = new File(filePath);
                         folderName = file.getParentFile() != null ? file.getParentFile().getName() : "";
                     }
 
-                    // ফোল্ডার নাম যাচাই করা এবং যোগ করা
                     if (folderName != null && !folderName.trim().isEmpty()) {
                         if (folderMap.containsKey(folderName)) {
                             folderMap.put(folderName, folderMap.get(folderName) + 1);
@@ -192,7 +190,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-                // folderMap থেকে ফোল্ডার গুলি লোড করা
                 for (Map.Entry<String, Integer> entry : folderMap.entrySet()) {
                     folders.add(new Folder(entry.getKey(), "", entry.getValue()));
                 }

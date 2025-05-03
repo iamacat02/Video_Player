@@ -10,11 +10,12 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        android:enableOnBackInvokedCallback="true"
         android:fullBackupContent="@xml/backup_rules"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
@@ -25,7 +26,7 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".SplashActivity"
+            android:name=".ui.screen.SplashActivity"
             android:exported="true"
             android:theme="@style/SplashThemeV31">
             <intent-filter>
@@ -35,23 +36,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="false">
 
         </activity>
         <activity
-            android:name=".VideoListActivity"
-            android:parentActivityName=".MainActivity"
+            android:name=".ui.screen.VideoListActivity"
             android:exported="false"
+            android:parentActivityName=".ui.MainActivity"
             android:theme="@style/I.Am.A.Cat.VideoPlayer">
 
         </activity>
         <activity
-            android:name=".VideoPlayerActivity"
+            android:name=".ui.screen.VideoPlayerActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboardHidden"
             android:exported="false"
             android:launchMode="singleTask"
-            android:parentActivityName=".VideoListActivity"
+            android:parentActivityName=".ui.screen.VideoListActivity"
             android:resizeableActivity="true"
             android:supportsPictureInPicture="true"
             android:theme="@style/I.Am.A.Cat.VideoPlayer.FullScreenActivity">
@@ -59,12 +60,12 @@
         </activity>
 
         <service
-            android:name=".PlaybackService"
+            android:name=".services.PlaybackService"
             android:exported="false"
             android:foregroundServiceType="mediaPlayback"
             android:permission="android.permission.BIND_JOB_SERVICE">
             <intent-filter>
-                <action android:name="androidx.media3.session.MediaSessionService"/>
+                <action android:name="androidx.media3.session.MediaSessionService" />
             </intent-filter>
         </service>
 
